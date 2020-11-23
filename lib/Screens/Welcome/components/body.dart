@@ -1,4 +1,5 @@
 import 'package:alloy/Screens/Login/login_screen.dart';
+import 'package:alloy/Screens/Register/register_screen.dart';
 import 'package:alloy/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:alloy/Screens/Welcome/components/background.dart';
@@ -38,7 +39,12 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "REGISTER",
-              press: () {},
+              press: () {Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context){return RegisterScreen();}
+                  ),
+              );},
               textColor: Colors.black,
               color: kPrimaryLightColor,
             ),

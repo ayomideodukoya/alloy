@@ -1,7 +1,9 @@
 import 'package:alloy/Screens/Home/home_screen.dart';
+import 'package:alloy/Screens/Register/register_screen.dart';
 import 'package:alloy/Screens/Welcome/welcome_screen.dart';
 import 'package:alloy/components/already_have_an_account_acheck.dart';
 import 'package:alloy/components/rounded_button.dart';
+import 'package:alloy/components/rounded_input_mail.dart';
 import 'package:alloy/components/rounded_password_field.dart';
 import 'package:alloy/components/text_field_container.dart';
 import 'package:alloy/constants.dart';
@@ -54,7 +56,7 @@ class Body extends StatelessWidget {
               height: size.height * 0.25,
             ),
             SizedBox(height: size.height * 0.03,),
-            RoundedInputField(
+            RoundedInputMailField(
               hintText: "Your Email",
               onChanged: (value) {},
             ),
@@ -71,7 +73,19 @@ class Body extends StatelessWidget {
               );},
             ),
             SizedBox(height: size.height * 0.03,),
-            AlreadyHaveAnAccountCheck(press: () {},),
+            AlreadyHaveAnAccountCheck(
+              login: true,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context){
+                      return RegisterScreen();
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
