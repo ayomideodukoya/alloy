@@ -6,6 +6,7 @@ import 'package:alloy/Screens/Register/components/background.dart';
 import 'package:alloy/components/already_have_an_account_acheck.dart';
 import 'package:alloy/components/rounded_button.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:alloy/Screens/Page Navigator/page_navigator.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -41,7 +42,7 @@ class Body extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context){
                       
-                      return HomeScreen();
+                      return PageNavigator();
                     },
                   ),
                 );

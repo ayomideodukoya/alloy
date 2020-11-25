@@ -3,7 +3,6 @@ import 'package:alloy/models/operation_model.dart';
 import 'package:alloy/models/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'components/card_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,8 +10,9 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  //current index
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
+  //current index for cards
   int current = 0; //default
 
   // handle indicator
@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -59,6 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 25,
               ),
+
+              // User information
               Padding(
                 padding: EdgeInsets.only(left: 16, bottom: 16),
                 child: Column(
@@ -88,7 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
               //Services Section
               Padding(
-                padding: EdgeInsets.only(left: 16, bottom: 13, top: 29, right: 8),
+                padding:
+                    EdgeInsets.only(left: 16, bottom: 13, top: 29, right: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -97,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 18,
-                          color: kBlackColor),
+                          color: Colors.black),
                     ),
                     Row(
                       children: map<Widget>(datas, (index, selected) {
@@ -145,17 +149,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // Transaction Section
               Padding(
-                padding: EdgeInsets.only(left: 16, bottom: 13, top: 29, right: 8),
+                padding:
+                    EdgeInsets.only(left: 16, bottom: 13, top: 29, right: 8),
                 child: Text(
-                  'Transaction History',
+                  'Recent Transactions',
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 18,
-                      color: kBlackColor),
+                      color: Colors.black),
                 ),
               ),
 
+              // iterating over each transaction in the transaction model
               ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: transactions.length,
                 padding: EdgeInsets.only(left: 16, right: 16),
                 shrinkWrap: true,
@@ -163,19 +170,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Container(
                     height: 60,
                     margin: EdgeInsets.only(bottom: 13),
-                    padding: EdgeInsets.only(left: 24, top: 12, bottom: 12, right: 22),
+                    padding: EdgeInsets.only(
+                        left: 24, top: 12, bottom: 12, right: 22),
                     decoration: BoxDecoration(
-                      color: kWhiteColor,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: kTenBlackColor,
-                          blurRadius: 10,
-                          spreadRadius: 5,
-                          offset: Offset(8.0, 8.0),
-                        )
-                      ]
-                    ),
+                        color: kWhiteColor,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: kTenBlackColor,
+                            blurRadius: 10,
+                            spreadRadius: 5,
+                            offset: Offset(8.0, 8.0),
+                          )
+                        ]),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -185,10 +192,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 60,
                               width: 60,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(transactions[index].photo)
-                                )
-                              ),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          transactions[index].photo))),
                             ),
                             SizedBox(
                               width: 13,
@@ -197,14 +203,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text(transactions[index].name,
+                                Text(
+                                  transactions[index].name,
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w700,
                                     color: kBlackColor,
                                   ),
                                 ),
-                                Text(transactions[index].date,
+                                Text(
+                                  transactions[index].date,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
@@ -217,11 +225,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Row(
                           children: <Widget>[
-                            Text(transactions[index].amount,
+                            Text(
+                              transactions[index].amount,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
-                                color: kBlueColor,
+                                color: transactions[index].debit ? Colors.red : kBlueColor,
                               ),
                             )
                           ],
@@ -237,6 +246,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class OperationCard extends StatefulWidget {

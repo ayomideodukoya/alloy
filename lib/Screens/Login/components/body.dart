@@ -1,4 +1,5 @@
 import 'package:alloy/Screens/Home/home_screen.dart';
+import 'package:alloy/Screens/Page%20Navigator/page_navigator.dart';
 import 'package:alloy/Screens/Register/register_screen.dart';
 import 'package:alloy/Screens/Welcome/welcome_screen.dart';
 import 'package:alloy/components/already_have_an_account_acheck.dart';
@@ -68,7 +69,7 @@ class Body extends StatelessWidget {
               press: () {Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context){return HomeScreen();}
+                    builder: (context){return PageNavigator();}
                 ),
               );},
             ),
