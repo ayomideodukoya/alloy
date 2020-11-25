@@ -2,14 +2,15 @@ class TransactionModel {
   String name;
   String photo;
   String date;
+  bool debit;
   String amount;
 
-  TransactionModel(this.name, this.photo, this.date, this.amount);
+  TransactionModel(this.name, this.photo, this.date,this.debit, this.amount);
 }
 
 List<TransactionModel> transactions = transactionData
     .map((item) => TransactionModel(
-        item['name'], item['photo'], item['date'], item['amount']))
+        item['name'], item['photo'], item['date'], item['debit'], item['amount']))
     .toList();
 
 var transactionData = [

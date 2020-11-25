@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen>
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
-                                color: transactions[index].debit ? Colors.red : kBlueColor,
+                                color: transactions[index].debit ? Color(0xFFFF0000) : kBlueColor,
                               ),
                             )
                           ],
