@@ -6,9 +6,10 @@ class CardModel {
   int cardBackground;
   String cardElementTop;
   String cardElementBottom;
+  String CVV;
 
   CardModel(this.user, this.cardNumber, this.cardExpired, this.cardType,
-      this.cardBackground, this.cardElementTop, this.cardElementBottom);
+      this.cardBackground, this.cardElementTop, this.cardElementBottom, this.CVV);
 }
 
 List<CardModel> cards = cardData.map(
@@ -20,6 +21,7 @@ List<CardModel> cards = cardData.map(
     item['cardBackground'],
     item['cardElementTop'],
     item['cardElementBottom'],
+    item['CVV'],
   ),
 ).toList();
 
@@ -27,7 +29,8 @@ var cardData = [
   {
     "user": "Ini Adegoke",
     "cardNumber": "**** **** **** 1425",
-    "cardExpired": "03-01-2023",
+    "cardExpired": "01/23",
+    "CVV":"325",
     "cardType": "assets/images/mastercard_logo.png",
     "cardBackground": 0xFF1E1E99,
     "cardElementTop": "assets/icons/ellipse_top_pink.svg",
@@ -36,7 +39,8 @@ var cardData = [
   {
     "user": "Ini Adegoke",
     "cardNumber": "**** **** **** 8287",
-    "cardExpired": "03-01-2025",
+    "cardExpired": "01/25",
+    "CVV":"737",
     "cardType": "assets/images/mastercard_logo.png",
     "cardBackground": 0xFFFF70A3,
     "cardElementTop": "assets/icons/ellipse_top_blue.svg",
@@ -45,7 +49,8 @@ var cardData = [
   {
     "user": "Ini Adegoke",
     "cardNumber": "**** **** **** 1425",
-    "cardExpired": "03-01-2023",
+    "cardExpired": "05/21",
+    "CVV":"128",
     "cardType": "assets/images/mastercard_logo.png",
     "cardBackground": 0xFF1E1E99,
     "cardElementTop": "assets/icons/ellipse_top_pink.svg",

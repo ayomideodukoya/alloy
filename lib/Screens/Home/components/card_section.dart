@@ -12,103 +12,129 @@ class _CardSectionState extends State<CardSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 199,
+      height: 175,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.only(left: 16, right: 6),
           itemCount: cards.length,
           itemBuilder: (context, index) {
             return Container(
+              width: 310,
               margin: EdgeInsets.only(right: 10),
-              height: 199,
-              width: 344,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(28),
-                  color: Color(cards[index].cardBackground)),
-              child: Stack(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Color.fromRGBO(35, 60, 103, 1)
+              ),
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Positioned(
-                    child:
-                    SvgPicture.asset(cards[index].cardElementTop),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: SvgPicture.asset(
-                        cards[index].cardElementBottom),
-                  ),
-                  Positioned(
-                    left: 29,
-                    top: 48,
-                    child: Text(
-                      'CARD NUMBER',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: kWhiteColor,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Color.fromRGBO(50, 172, 121, 1),
+                        child: Icon(Icons.check,
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ),
+                      Text("VISA",
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 32,),
+
+                  Text(cards[index].cardNumber,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 2.0,
                     ),
                   ),
-                  Positioned(
-                    left: 29,
-                    top: 65,
-                    child: Text(
-                      cards[index].cardNumber,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: kWhiteColor,
+
+                  SizedBox(height: 25,),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("CARD HOLDERNAME",
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: Colors.blue[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(cards[index].user,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 21,
-                    top: 35,
-                    child: Image.asset(
-                      cards[index].cardType,
-                      width: 27,
-                      height: 27,
-                    ),
-                  ),
-                  Positioned(
-                    left: 29,
-                    bottom: 45,
-                    child: Text("CARD HOLDERNAME",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: kWhiteColor,
-                      ),),
-                  ),
-                  Positioned(
-                    left: 29,
-                    bottom: 21,
-                    child: Text(cards[index].user,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: kWhiteColor,
-                      ),),
-                  ),
-                  Positioned(
-                    left: 202,
-                    bottom: 45,
-                    child: Text("EXPIRY DATE",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: kWhiteColor,
-                      ),),
-                  ),
-                  Positioned(
-                    left: 202,
-                    bottom: 21,
-                    child: Text(cards[index].cardExpired,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: kWhiteColor,
-                      ),),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("EXPIRES",
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: Colors.blue[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(cards[index].cardExpired,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          )
+                        ],
+                      ),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("CVV",
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: Colors.blue[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(cards[index].CVV,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[100],
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 2.0,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   )
                 ],
               ),

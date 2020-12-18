@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CardScreen extends StatefulWidget {
+class SingleCardScreen extends StatefulWidget {
   @override
-  _CardScreenState createState() => _CardScreenState();
+  _SingleCardScreenState createState() => _SingleCardScreenState();
 }
 
-class _CardScreenState extends State<CardScreen>
+class _SingleCardScreenState extends State<SingleCardScreen>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:alloy/Screens/Card/card_screen.dart';
+import 'package:alloy/Screens/Card/cards_screen.dart';
 import 'package:alloy/Screens/Home/home_screen.dart';
 import 'package:alloy/Screens/Account/account_screen.dart';
 import 'package:alloy/Screens/Transactions/transaction_screen.dart';

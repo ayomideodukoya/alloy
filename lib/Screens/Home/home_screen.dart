@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
 
               Container(
-                height: 123,
+                height: 100,
                 child: ListView.builder(
                     itemCount: datas.length,
                     padding: EdgeInsets.only(left: 16),
@@ -274,8 +274,8 @@ class _OperationCardState extends State<OperationCard> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 16),
-      width: 123,
-      height: 123,
+      width: 100,
+      height: 100,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -285,6 +285,7 @@ class _OperationCardState extends State<OperationCard> {
             offset: Offset(8.0, 8.0),
           )
         ],
+//        border: Border.all(width: 1, color: kPrimaryColor),
         borderRadius: BorderRadius.circular(15),
         color: widget.isSelected ? kBlueColor : kWhiteColor,
       ),
@@ -293,7 +294,9 @@ class _OperationCardState extends State<OperationCard> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SvgPicture.asset(
-              widget.isSelected ? widget.selectedIcon : widget.unselectedIcon),
+              widget.isSelected ? widget.selectedIcon : widget.unselectedIcon,
+            height: 35,
+          ),
           SizedBox(
             height: 9,
           ),
@@ -301,7 +304,7 @@ class _OperationCardState extends State<OperationCard> {
             widget.operation,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 10,
               fontWeight: FontWeight.w700,
               color: widget.isSelected ? kWhiteColor : kBlueColor,
             ),

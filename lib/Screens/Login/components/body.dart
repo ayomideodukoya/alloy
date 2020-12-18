@@ -1,4 +1,3 @@
-import 'package:alloy/Screens/Home/home_screen.dart';
 import 'package:alloy/Screens/Page%20Navigator/page_navigator.dart';
 import 'package:alloy/Screens/Register/register_screen.dart';
 import 'package:alloy/Screens/Welcome/welcome_screen.dart';
@@ -6,12 +5,9 @@ import 'package:alloy/components/already_have_an_account_acheck.dart';
 import 'package:alloy/components/rounded_button.dart';
 import 'package:alloy/components/rounded_input_mail.dart';
 import 'package:alloy/components/rounded_password_field.dart';
-import 'package:alloy/components/text_field_container.dart';
-import 'package:alloy/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:alloy/Screens/Login/components/background.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:alloy/components/rounded_input_field.dart';
 
 class Body extends StatelessWidget {
   const Body({
