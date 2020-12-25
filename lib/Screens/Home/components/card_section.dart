@@ -23,7 +23,12 @@ class _CardSectionState extends State<CardSection> {
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color.fromRGBO(35, 60, 103, 1)
+//                  color: Color(cards[index].cardBackground)
+                  gradient: LinearGradient(
+                      begin: Alignment(-1.0, -8.0),
+                      end: Alignment(1.0, 8.0),
+                      colors: <Color>[Color(cards[index].cardBackground1), Color(cards[index].cardBackground2)]
+                  )
               ),
               padding: EdgeInsets.all(16),
               child: Column(
@@ -61,7 +66,7 @@ class _CardSectionState extends State<CardSection> {
                     ),
                   ),
 
-                  SizedBox(height: 25,),
+                  SizedBox(height: 21,),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

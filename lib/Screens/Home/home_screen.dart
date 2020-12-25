@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
 
               Container(
-                height: 100,
+                height: 140,
                 child: ListView.builder(
                     itemCount: datas.length,
                     padding: EdgeInsets.only(left: 16),
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen>
               // Transaction Section
               Padding(
                 padding:
-                    EdgeInsets.only(left: 16, bottom: 13, top: 29, right: 8),
+                    EdgeInsets.only(left: 16, bottom: 13, top: 19, right: 8),
                 child: Text(
                   'Recent Transactions',
                   style: TextStyle(
@@ -273,16 +273,17 @@ class _OperationCardState extends State<OperationCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 16),
+      margin: EdgeInsets.only(right: 16, top: 20, bottom: 20),
       width: 100,
-      height: 100,
+
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: kTenBlackColor,
-            blurRadius: 10,
-            spreadRadius: 5,
-            offset: Offset(8.0, 8.0),
+//            color: kTenBlackColor,
+            color: Colors.grey.withOpacity(0.5),
+            blurRadius: 6,
+            spreadRadius: 3,
+            offset: Offset(0.8,2),
           )
         ],
 //        border: Border.all(width: 1, color: kPrimaryColor),
