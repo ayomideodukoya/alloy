@@ -1,36 +1,89 @@
+import 'package:alloy/Screens/Card/cards_screen.dart';
+import 'package:credit_card/credit_card_form.dart';
+import 'package:credit_card/credit_card_model.dart';
+import 'package:credit_card/credit_card_widget.dart';
 import 'package:flutter/material.dart';
 
-class SingleCardScreen extends StatefulWidget {
+import 'package:card_scanner/card_scanner.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:async';
+
+import 'package:alloy/Screens/Card/add_new_card_screen.dart';
+
+import '../../constants.dart';
+
+class AddCardManually extends StatefulWidget {
   @override
-  _SingleCardScreenState createState() => _SingleCardScreenState();
+  _AddCardManuallyState createState() => _AddCardManuallyState();
 }
 
-class _SingleCardScreenState extends State<SingleCardScreen>
-    with AutomaticKeepAliveClientMixin {
+class _AddCardManuallyState extends State<AddCardManually> {
+  String cardNumber = "";
+  String expiryDate = "";
+  String cardHolderName = "";
+  String cvvCode = "";
+  bool isCvvFocused = false;
+
+  CardDetails _cardDetails;
+
+  Future<void> scanCard() async {
+    var cardDetails = await CardScanner.scanCard(
+        scanOptions: CardScanOptions(
+          scanCardHolderName: true,
+          scanCardIssuer: true,
+        ));
+
+    if (!mounted) return;
+    setState(() {
+      _cardDetails = cardDetails;
+      cardNumber = cardDetails.cardNumber;
+      expiryDate = cardDetails.expiryDate;
+      cardHolderName = cardDetails.cardHolderName;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_rounded, color: Colors.black,size: 28,),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
         backgroundColor: Colors.white,
-        title: Text(
-          'Card Details',
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.black,
-          ),
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Row(
+          children: [
+            Text(
+              'Add New Card',
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
+          actions: <Widget>[
+            FlatButton(
+                onPressed: () async {
+                  var status = await Permission.camera.request();
+                  if (status == PermissionStatus.granted) {
+                    scanCard();
+                  }
+                },
+                child: Text(
+                  'Scan Card',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                  ),
+                ))
+          ]
       ),
       body: SafeArea(
-        child:  Container(
-          margin: EdgeInsets.only(top: 15),
-          alignment: Alignment.topCenter,
-          child: Container(
-            height: 175,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+          Container(
+            margin: EdgeInsets.only(top: 10),
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -68,7 +121,7 @@ class _SingleCardScreenState extends State<SingleCardScreen>
                 ),
                 SizedBox(height: 32,),
 
-                Text("**** **** **** ****",
+                Text((cardNumber != "" ? cardNumber : "**** **** **** ****"),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -94,7 +147,7 @@ class _SingleCardScreenState extends State<SingleCardScreen>
                           ),
                         ),
                         SizedBox(height: 5,),
-                        Text("**** ******",
+                        Text(cardHolderName != "" ? cardHolderName : "**** ******",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey[100],
@@ -117,7 +170,7 @@ class _SingleCardScreenState extends State<SingleCardScreen>
                           ),
                         ),
                         SizedBox(height: 5,),
-                        Text("MM/YY",
+                        Text(expiryDate != "" ? expiryDate : "MM/YY",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey[100],
@@ -140,7 +193,7 @@ class _SingleCardScreenState extends State<SingleCardScreen>
                           ),
                         ),
                         SizedBox(height: 5,),
-                        Text("***",
+                        Text(cvvCode != "" ? cvvCode : "***",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey[100],
@@ -155,12 +208,52 @@ class _SingleCardScreenState extends State<SingleCardScreen>
               ],
             ),
           ),
-        ),
 
+              Container(
+                child: CreditCardForm(
+                  onCreditCardModelChange: onModelChange,
+                ),
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
+
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return CardScreen();
+                      },
+                    ),
+                  );
+                },
+                color: Color(0xFF0080FF),
+                padding: EdgeInsets.only(left: 100, right: 100, top: 20, bottom: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: new Text("Proceed", style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white
+                ),),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
+  void onModelChange(CreditCardModel model){
+    setState(() {
+      cardNumber = model.cardNumber;
+      expiryDate = model.expiryDate;
+      cardHolderName = model.cardHolderName;
+      cvvCode = model.cvvCode;
+      isCvvFocused = model.isCvvFocused;
+    });
+  }
 }

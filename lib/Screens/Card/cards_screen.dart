@@ -1,3 +1,4 @@
+import 'package:alloy/Screens/Card/add_card_manually.dart';
 import 'package:alloy/Screens/Card/camera_screen.dart';
 import 'package:alloy/constants.dart';
 import 'package:alloy/models/card_model.dart';
@@ -41,7 +42,7 @@ class _CardScreenState extends State<CardScreen>
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return CameraScreen();
+                        return AddCardManually();
                       },
                     ),
                   );
@@ -66,13 +67,12 @@ class _CardScreenState extends State<CardScreen>
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 24),
-                height: (cards.length * 190).toDouble(),
+                height: (cards.length * 160).toDouble(),
                 child: new StaggeredGridView.countBuilder(
                   physics: NeverScrollableScrollPhysics(),
                   crossAxisCount: 4,
                   itemCount: cards.length,
                   itemBuilder: (BuildContext context, int index) => Container(
-                    width: 310,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
 //                        color: Color(cards[index].cardBackground)
@@ -111,7 +111,7 @@ class _CardScreenState extends State<CardScreen>
                           ],
                         ),
                         SizedBox(
-                          height: 32,
+                          height: 23,
                         ),
                         Text(
                           cards[index].cardNumber,
@@ -123,7 +123,7 @@ class _CardScreenState extends State<CardScreen>
                           ),
                         ),
                         SizedBox(
-                          height: 25,
+                          height: 15,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -228,7 +228,7 @@ class _CardScreenState extends State<CardScreen>
                     borderRadius: BorderRadius.all(
                         Radius.circular(10.0) //         <--- border radius here
                         )),
-                margin: EdgeInsets.symmetric(horizontal: 110),
+                margin: EdgeInsets.symmetric(horizontal: 80),
                 child: FlatButton(
                   color: Colors.transparent,
                   onPressed: () {
@@ -236,7 +236,7 @@ class _CardScreenState extends State<CardScreen>
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return CameraScreen();
+                          return AddCardManually();
                         },
                       ),
                     );
@@ -244,7 +244,22 @@ class _CardScreenState extends State<CardScreen>
                   child: Container(
                     height: 100,
                     alignment: Alignment.center,
-                    child: Text('Add new card'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color.fromRGBO(50, 172, 121, 1),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                        ),
+                        SizedBox(width: 5,),
+                        Text('Add card'),
+                      ],
+                    ),
                   ),
                 ),
               )

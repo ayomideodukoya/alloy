@@ -16,6 +16,11 @@ var operationsData = [
     "unselectedIcon": "assets/icons/money_transfer_blue.svg"
   },
   {
+    "name": "Money\nTransfer",
+    "selectedIcon": "assets/icons/money_transfer_white.svg",
+    "unselectedIcon": "assets/icons/money_transfer_blue.svg"
+  },
+  {
     "name": "Bank\nWithdraw",
     "selectedIcon": "assets/icons/bank_withdraw_white.svg",
     "unselectedIcon": "assets/icons/bank_withdraw_blue.svg"
@@ -24,10 +29,5 @@ var operationsData = [
     "name": "Insight\nTracking",
     "selectedIcon": "assets/icons/insight_tracking_white.svg",
     "unselectedIcon": "assets/icons/insight_tracking_blue.svg"
-  },
-  {
-    "name": "Money\nTransfer",
-    "selectedIcon": "assets/icons/money_transfer_white.svg",
-    "unselectedIcon": "assets/icons/money_transfer_blue.svg"
   },
 ];
