@@ -1,9 +1,7 @@
 import 'package:alloy/Screens/Card/add_card_manually.dart';
-import 'package:alloy/Screens/Card/camera_screen.dart';
 import 'package:alloy/constants.dart';
 import 'package:alloy/models/card_model.dart';
 import 'package:flutter/material.dart';
-import 'add_new_card_screen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CardScreen extends StatefulWidget {

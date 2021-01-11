@@ -18,7 +18,7 @@ class _PageNavigatorState extends State<PageNavigator> {
 
   PageController _pageController = PageController();
 
-  List<Widget> _screens = [HomeScreen(), CardScreen(), AccountScreen(), TransactionScreen()];
+  List<Widget> _screens = [HomeScreen(), CardScreen(), TransactionScreen(), AccountScreen()];
 
   void _onPageChanged(int index){
     setState(() {

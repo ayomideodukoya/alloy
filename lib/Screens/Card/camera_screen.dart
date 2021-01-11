@@ -1,7 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:alloy/constants.dart';
-import 'package:alloy/Screens/Card/add_new_card_screen.dart';
 import 'package:card_scanner/card_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';

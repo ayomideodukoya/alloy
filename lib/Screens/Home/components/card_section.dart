@@ -1,8 +1,6 @@
 import 'package:alloy/Screens/Card/single_card_screen.dart';
 import 'package:alloy/models/card_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:alloy/constants.dart';
 
 class CardSection extends StatefulWidget {
   @override
